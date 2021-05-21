@@ -1,4 +1,4 @@
-package com.juarai.capstone
+package com.juarai.capstone.ui.register
 
 import androidx.lifecycle.ViewModel
 
