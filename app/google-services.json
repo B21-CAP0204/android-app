@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "987421911424",
+    "project_id": "juarai-f1fdf",
+    "storage_bucket": "juarai-f1fdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987421911424:android:77dc41603d1a5797e1b965",
+        "android_client_info": {
+          "package_name": "com.juarai.capstone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987421911424-j2pa56t0p5cg1bl04ao3tqu5vt09bnqq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaHQsF19gPQZAv5J_M9rXaC5Ze1WPOqrw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987421911424-j2pa56t0p5cg1bl04ao3tqu5vt09bnqq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
