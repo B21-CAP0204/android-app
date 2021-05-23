@@ -11,26 +11,20 @@ import com.juarai.capstone.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-    private val binding = _binding!!
+    private lateinit var _binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.fabRegister.setOnClickListener {
+        _binding.fabRegister.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_registerFragment)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

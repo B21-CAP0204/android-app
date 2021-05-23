@@ -7,4 +7,12 @@
     <string name="labelAddress">Alamat</string>
     <string name="labelMale">Laki - Laki</string>
     <string name="labelFemale">Perempuan</string>
+    <string name="labelRT">RT</string>
+    <string name="labelRW">RW</string>
+    <string name="labelKelurahan">Kelurahan</string>
+    <string name="labelKecamatan">Kecamatan</string>
+    <string name="labelGoldar">Golongan Darah</string>
+    <string name="labelGender">Jenis Kelamin</string>
+    <string name="labelReligion">Agama</string>
+    <string name="labelOccupation">Pekerjaan</string>
 </resources>

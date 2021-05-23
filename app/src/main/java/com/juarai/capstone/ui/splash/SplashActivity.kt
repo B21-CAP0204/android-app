@@ -12,13 +12,12 @@ import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity() {
 
-    private var _binding: ActivitySplashBinding? = null
-    private val binding = _binding!!
+    private lateinit var _binding: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(_binding.root)
 
         lifecycleScope.launch(Dispatchers.Main) {
             delay(2500)
@@ -26,10 +25,5 @@ class SplashActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }
