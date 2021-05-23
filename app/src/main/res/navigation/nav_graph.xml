@@ -9,7 +9,11 @@
         android:id="@+id/registerFragment"
         android:name="com.juarai.capstone.ui.register.RegisterFragment"
         android:label="Register"
-        tools:layout="@layout/register_fragment" />
+        tools:layout="@layout/register_fragment" >
+        <action
+            android:id="@+id/action_registerFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.juarai.capstone.ui.home.HomeFragment"
@@ -19,4 +23,9 @@
             android:id="@+id/action_homeFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.juarai.capstone.ui.camera.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" />
 </navigation>

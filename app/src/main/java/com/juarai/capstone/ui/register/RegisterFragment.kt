@@ -8,13 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.navigation.fragment.findNavController
 import com.juarai.capstone.R
 import com.juarai.capstone.databinding.RegisterFragmentBinding
 
 class RegisterFragment : Fragment() {
 
     private lateinit var viewModel: RegisterViewModel
-    private lateinit var _binding: RegisterFragmentBinding
+    private lateinit var binding: RegisterFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,13 +26,22 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = RegisterFragmentBinding.inflate(inflater, container, false)
+        binding = RegisterFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         val itemGoldar = listOf("A", "B", "AB", "O")
         val adapterGoldar = context?.let { ArrayAdapter(it, R.layout.list_goldar, itemGoldar) }
-        (_binding.spinnerGoldar.editText as? AutoCompleteTextView)?.setAdapter(adapterGoldar)
+        (binding.spinnerGoldar.editText as? AutoCompleteTextView)?.setAdapter(adapterGoldar)
         val itemAgama = listOf("Islam", "Kristen", "Katholik", "Hindu", "Budha", "Konghucu")
         val adapterAgama = context?.let { ArrayAdapter(it, R.layout.list_goldar, itemAgama) }
-        (_binding.spinnerAgama.editText as? AutoCompleteTextView)?.setAdapter(adapterAgama)
-        return _binding.root
+        (binding.spinnerAgama.editText as? AutoCompleteTextView)?.setAdapter(adapterAgama)
+
+        binding.btnNext.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_cameraFragment)
+        }
     }
 }
