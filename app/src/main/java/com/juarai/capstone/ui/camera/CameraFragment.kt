@@ -20,8 +20,8 @@ import com.juarai.capstone.databinding.FragmentCameraBinding
 class CameraFragment : Fragment() {
 
     private lateinit var binding: FragmentCameraBinding
-    lateinit var fileUri: Uri
-    val storageRef = FirebaseStorage.getInstance().reference
+    var fileUri: Uri? = null
+    val storageRef = FirebaseStorage.getInstance("gs://neat-coast-314213.appspot.com/").reference
 
 
     override fun onCreateView(
@@ -44,11 +44,15 @@ class CameraFragment : Fragment() {
                 }
         }
         binding.btnUploadKK.setOnClickListener {
-            val imgRef = storageRef.child("kk/${fileUri.lastPathSegment}")
-            val uploadTask = imgRef.putFile(fileUri)
-            uploadTask.addOnFailureListener{
+            Log.d("fileURI", fileUri.toString())
+            val imgRef = storageRef.child("kk/${fileUri?.lastPathSegment}")
+            val uploadTask = fileUri?.let { it1 -> imgRef.putFile(it1) }
+            uploadTask?.addOnFailureListener{
                 Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
                 Log.e("uploadStorage", it.stackTraceToString())
+            }
+            uploadTask?.addOnSuccessListener {
+                Toast.makeText(context, "Upload success!", Toast.LENGTH_LONG).show()
             }
         }
     }
