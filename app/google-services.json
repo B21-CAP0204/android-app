@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "987421911424",
-    "project_id": "juarai-f1fdf",
-    "storage_bucket": "juarai-f1fdf.appspot.com"
+    "project_number": "769471801470",
+    "project_id": "neat-coast-314213",
+    "storage_bucket": "neat-coast-314213.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:987421911424:android:77dc41603d1a5797e1b965",
+        "mobilesdk_app_id": "1:769471801470:android:15245808fde72f7b1b102f",
         "android_client_info": {
           "package_name": "com.juarai.capstone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "987421911424-j2pa56t0p5cg1bl04ao3tqu5vt09bnqq.apps.googleusercontent.com",
+          "client_id": "769471801470-v67ldfkcquotvlcuknm7q1fglt36o6k9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDaHQsF19gPQZAv5J_M9rXaC5Ze1WPOqrw"
+          "current_key": "AIzaSyAykUiFg7MY2MpDS6AidEIyx1znhTq6vjo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "987421911424-j2pa56t0p5cg1bl04ao3tqu5vt09bnqq.apps.googleusercontent.com",
+              "client_id": "769471801470-v67ldfkcquotvlcuknm7q1fglt36o6k9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
