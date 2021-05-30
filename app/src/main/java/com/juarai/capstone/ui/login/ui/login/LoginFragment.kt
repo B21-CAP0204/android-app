@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuth
 import com.juarai.capstone.R
 import com.juarai.capstone.databinding.FragmentLoginBinding
 
@@ -21,7 +20,6 @@ class LoginFragment : Fragment() {
 
     private lateinit var loginViewModel: LoginViewModel
     private var _binding: FragmentLoginBinding? = null
-    private var mAuth = FirebaseAuth.getInstance()
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -99,15 +97,11 @@ class LoginFragment : Fragment() {
 
         loginButton.setOnClickListener {
             loadingProgressBar.visibility = View.VISIBLE
-            val currentUser = mAuth.currentUser
-            if(currentUser != null){
-                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-            }else{
-                loginViewModel.login(
-                    usernameEditText.text.toString(),
-                    passwordEditText.text.toString()
-                )
-            }
+            loginViewModel.login(
+                usernameEditText.text.toString(),
+                passwordEditText.text.toString()
+            )
+            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         }
     }
 

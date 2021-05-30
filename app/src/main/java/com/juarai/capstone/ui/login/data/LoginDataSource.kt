@@ -1,7 +1,6 @@
 package com.juarai.capstone.ui.login.data
 
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import android.app.Activity
 import com.juarai.capstone.ui.login.data.model.LoggedInUser
 import java.io.IOException
 
@@ -9,23 +8,8 @@ import java.io.IOException
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
 class LoginDataSource {
-    private var mAuth = FirebaseAuth.getInstance()
 
-    fun login(username: String, password: String): Result<FirebaseUser> {
-        lateinit var result : Result<FirebaseUser>
-        mAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    result = Result.Success(mAuth.currentUser)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    updateUI(null)
-                }
-            }
+    fun login(username: String, password: String): Result<LoggedInUser> {
         try {
             // TODO: handle loggedInUser authentication
             val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Jane Doe")

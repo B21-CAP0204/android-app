@@ -2,7 +2,9 @@ package com.juarai.capstone.ui.camera
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +13,16 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.storage.FirebaseStorage
 import com.juarai.capstone.R
 import com.juarai.capstone.databinding.FragmentCameraBinding
 
 class CameraFragment : Fragment() {
 
     private lateinit var binding: FragmentCameraBinding
+    lateinit var fileUri: Uri
+    val storageRef = FirebaseStorage.getInstance().reference
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +43,14 @@ class CameraFragment : Fragment() {
                     startPhotoResult.launch(intent)
                 }
         }
+        binding.btnUploadKK.setOnClickListener {
+            val imgRef = storageRef.child("kk/${fileUri.lastPathSegment}")
+            val uploadTask = imgRef.putFile(fileUri)
+            uploadTask.addOnFailureListener{
+                Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+                Log.e("uploadStorage", it.stackTraceToString())
+            }
+        }
     }
 
     private val startPhotoResult =
@@ -46,12 +60,13 @@ class CameraFragment : Fragment() {
 
             when (resultCode) {
                 Activity.RESULT_OK -> {
-                    val fileUri = data?.data
+                    fileUri = data?.data!!
                     println(fileUri)
                     binding.ivSelfie.setImageURI(fileUri)
                 }
                 ImagePicker.RESULT_ERROR -> {
-                    Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
+                        .show()
                 }
                 else -> {
                     Toast.makeText(requireContext(), "Dibatalkan", Toast.LENGTH_SHORT).show()
