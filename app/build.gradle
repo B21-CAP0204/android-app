@@ -81,14 +81,4 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
-    // Testing
-    // Unit Test
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation "androidx.arch.core:core-testing:$arch_version"
-    testImplementation "androidx.room:room-testing:$room_version"
-
-    // Instrument Test
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
