@@ -12,7 +12,7 @@ import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment() {
 
-    private val viewModel by inject<HomeViewModel>()
+    private val viewModel: HomeViewModel by inject()
     private lateinit var _binding: FragmentHomeBinding
 
     override fun onCreateView(
@@ -25,12 +25,12 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getUser().observe(viewLifecycleOwner, {
-            if (it.isEmpty())
-                println("Data masih kosong")
-            else
-                println(it)
-        })
+//        viewModel.getUser().observe(viewLifecycleOwner, {
+//            if (it.isEmpty())
+//                println("Data masih kosong")
+//            else
+//                println(it)
+//        })
         _binding.fabRegister.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_registerFragment)
         }

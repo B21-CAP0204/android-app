@@ -1,6 +1,7 @@
 package com.juarai.capstone
 
 import android.app.Application
+import com.juarai.capstone.di.repositoryModule
 import com.juarai.capstone.di.retrofitModule
 import com.juarai.capstone.di.roomModule
 import com.juarai.capstone.di.viewModelModule
@@ -16,6 +17,7 @@ class BaseApplication: Application() {
             modules(
                 roomModule,
                 retrofitModule,
+                repositoryModule,
                 viewModelModule
             )
         }

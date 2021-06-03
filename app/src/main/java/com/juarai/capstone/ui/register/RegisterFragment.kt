@@ -11,16 +11,12 @@ import android.widget.AutoCompleteTextView
 import androidx.navigation.fragment.findNavController
 import com.juarai.capstone.R
 import com.juarai.capstone.databinding.RegisterFragmentBinding
+import org.koin.android.ext.android.inject
 
 class RegisterFragment : Fragment() {
 
-    private lateinit var viewModel: RegisterViewModel
+    private val viewModel: RegisterViewModel by inject()
     private lateinit var binding: RegisterFragmentBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

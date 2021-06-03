@@ -1,6 +1,8 @@
 package com.juarai.capstone.di
 
 import androidx.room.Room
+import com.juarai.capstone.data.IRepository
+import com.juarai.capstone.data.Repository
 import com.juarai.capstone.data.local.AppDatabase
 import com.juarai.capstone.data.network.Endpoint
 import com.juarai.capstone.ui.camera.CameraViewModel
@@ -32,6 +34,12 @@ val retrofitModule = module {
             .client(get())
             .build()
         retrofit.create(Endpoint::class.java)
+    }
+}
+
+val repositoryModule = module {
+    single<IRepository> {
+        Repository(get())
     }
 }
 
