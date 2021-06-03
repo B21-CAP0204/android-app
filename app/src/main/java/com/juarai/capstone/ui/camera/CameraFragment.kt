@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.storage.FirebaseStorage
 import com.juarai.capstone.R
@@ -66,9 +65,8 @@ class CameraFragment : Fragment() {
             when (resultCode) {
                 Activity.RESULT_OK -> {
                     fileUri = data?.data!!
-                    Glide.with(this)
-                        .load(fileUri)
-                        .into(binding.ivSelfie)
+                    println(fileUri)
+                    binding.ivSelfie.setImageURI(fileUri)
                 }
                 ImagePicker.RESULT_ERROR -> {
                     Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
