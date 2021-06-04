@@ -4,7 +4,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface Endpoint {
-    @GET("api2/")
+    @GET("api2")
     suspend fun getData()
 
     @GET("api2")

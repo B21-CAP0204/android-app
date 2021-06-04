@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_cameraFragment_to_validationFragment"
             app:destination="@id/validationFragment" />
+        <argument
+            android:name="user"
+            app:argType="com.juarai.capstone.data.network.UserResponse" />
     </fragment>
     <fragment
         android:id="@+id/validationFragment"

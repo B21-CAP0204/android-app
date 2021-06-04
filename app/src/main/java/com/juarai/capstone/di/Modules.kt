@@ -4,6 +4,7 @@ import androidx.room.Room
 import com.juarai.capstone.data.IRepository
 import com.juarai.capstone.data.Repository
 import com.juarai.capstone.data.local.AppDatabase
+import com.juarai.capstone.data.network.Constants.BASE_URL
 import com.juarai.capstone.data.network.Endpoint
 import com.juarai.capstone.ui.camera.CameraViewModel
 import com.juarai.capstone.ui.home.HomeViewModel
@@ -29,7 +30,7 @@ val roomModule = module {
 val retrofitModule = module {
     single {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://neat-coast-314213.et.r.appspot.com/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()
