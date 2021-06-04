@@ -48,8 +48,8 @@ class RegisterFragment : Fragment() {
             val UserResponse = UserResponse(
                 nik = binding.editNIK.editText?.text.toString(),
                 name = binding.editName.editText?.text.toString(),
-                birthPlace = binding.editName.editText?.text.toString(),
-                birthDate = binding.editName.editText?.text.toString(),
+                birthPlace = binding.editBirthplace.editText?.text.toString(),
+                birthDate = binding.editBirthdate.editText?.text.toString(),
                 golDar = binding.spinnerGoldar.editText?.text.toString(),
                 gender = selectedtext,
                 address = binding.editAddress.editText?.text.toString(),
