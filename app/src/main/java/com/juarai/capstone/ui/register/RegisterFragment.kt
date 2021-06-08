@@ -19,25 +19,31 @@ import org.koin.android.ext.android.inject
 class RegisterFragment : Fragment() {
 
     private val viewModel: RegisterViewModel by inject()
-    private lateinit var binding: RegisterFragmentBinding
+    private var _binding: RegisterFragmentBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = RegisterFragmentBinding.inflate(inflater, container, false)
+        _binding = RegisterFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // GolDar
         val itemGoldar = listOf("A", "B", "AB", "O")
         val adapterGoldar = context?.let { ArrayAdapter(it, R.layout.list_goldar, itemGoldar) }
         (binding.spinnerGoldar.editText as? AutoCompleteTextView)?.setAdapter(adapterGoldar)
+
+        // Agama
         val itemAgama = listOf("Islam", "Kristen", "Katholik", "Hindu", "Budha", "Konghucu")
         val adapterAgama = context?.let { ArrayAdapter(it, R.layout.list_goldar, itemAgama) }
         (binding.spinnerAgama.editText as? AutoCompleteTextView)?.setAdapter(adapterAgama)
+
+        // Bundle to Object
         binding.btnNext.setOnClickListener {
             val radioButtonGroup = binding.genderGroup
             val radioButtonID = radioButtonGroup.checkedRadioButtonId
