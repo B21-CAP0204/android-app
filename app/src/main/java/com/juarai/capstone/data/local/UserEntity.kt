@@ -1,15 +1,14 @@
 package com.juarai.capstone.data.local
 
-import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "user")
 @Parcelize
 data class UserEntity(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val nik: Int = 0,
     val name: String = "",
     val birthPlace: String = "",

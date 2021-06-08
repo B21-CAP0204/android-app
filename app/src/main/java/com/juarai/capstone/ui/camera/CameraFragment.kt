@@ -13,6 +13,9 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.storage.FirebaseStorage
 import com.juarai.capstone.R
@@ -24,16 +27,18 @@ class CameraFragment : Fragment() {
 
     val viewModel: CameraViewModel by viewModels()
 
-    private lateinit var binding: FragmentCameraBinding
-    var fileUri: Uri? = null
-    var user: UserResponse? = null
-    val storageRef = FirebaseStorage.getInstance("gs://juarai_bucket/").reference
+    private var _binding: FragmentCameraBinding? = null
+    private val binding get() = _binding!!
+
+    private var fileUri: Uri? = null
+    private var user: UserResponse? = null
+    private val storageRef = FirebaseStorage.getInstance("gs://juarai_bucket/").reference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentCameraBinding.inflate(inflater, container, false)
+        _binding = FragmentCameraBinding.inflate(inflater, container, false)
         user = arguments?.let { CameraFragmentArgs.fromBundle(it).user }
         return binding.root
     }
@@ -60,7 +65,9 @@ class CameraFragment : Fragment() {
             uploadTask?.addOnSuccessListener {
                 Toast.makeText(context, "Upload success!", Toast.LENGTH_LONG).show()
             }
-            viewModel.addUsertoFirestore(user!!)
+//            viewModel.addUsertoFirestore(user!!)
+            val action = CameraFragmentDirections.actionCameraFragmentToValidationFragment()
+            findNavController().navigate(action)
         }
     }
 
@@ -72,8 +79,9 @@ class CameraFragment : Fragment() {
             when (resultCode) {
                 Activity.RESULT_OK -> {
                     fileUri = data?.data!!
-                    println(fileUri)
-                    binding.ivSelfie.setImageURI(fileUri)
+                    Glide.with(this)
+                        .load(fileUri)
+                        .into(binding.ivSelfie)
                 }
                 ImagePicker.RESULT_ERROR -> {
                     Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
