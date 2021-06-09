@@ -8,8 +8,8 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "user")
 @Parcelize
 data class UserEntity(
-    @PrimaryKey(autoGenerate = true)
-    val nik: Int = 0,
+    @PrimaryKey
+    val nik: String = "",
     val name: String = "",
     val birthPlace: String = "",
     val birthDate: String = "",
@@ -21,5 +21,6 @@ data class UserEntity(
     val kelurahan: String = "",
     val kecamatan: String = "",
     val religion: String = "",
-    val occupation: String = ""
+    val occupation: String = "",
+    val fileUriKK: String = ""
 ) : Parcelable

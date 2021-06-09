@@ -1,13 +1,14 @@
 package com.juarai.capstone.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.juarai.capstone.R
 import com.juarai.capstone.databinding.FragmentHomeBinding
+import es.dmoral.toasty.Toasty
 import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment() {
@@ -28,8 +29,15 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getUser().observe(viewLifecycleOwner, {
             if (it.isEmpty())
-                println("Data masih kosong")
+                binding.cvData.visibility = View.GONE
             else
+                with(binding) {
+                    tvName.text = it[0].name
+                    tvNik.text = it[0].nik
+                    cvData.setOnClickListener {
+                        Toasty.success(requireContext(), "Application still processed", Toasty.LENGTH_SHORT).show()
+                    }
+                }
                 hideOther()
         })
 
