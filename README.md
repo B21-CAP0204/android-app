@@ -2,7 +2,7 @@
 
 ## Android Student Path
 - [Unero Bhagaskara](https://github.com/un-ro)
-- [Rizky Putra](https://github.com/rizkyputrapb)
+- [Rizky Putra Pradhana](https://github.com/rizkyputrapb)
 
 ## Prototype
 This project using architecture pattern and One activity many fragments
@@ -11,12 +11,12 @@ This project using architecture pattern and One activity many fragments
 We also use firebase service to store user data
 
 ## Process
-1. Home Page
+1. 🏠Home Page
     - If user has register then just display data
     - else proceed to Registration
-2. Registration Form
-3. Scan KK
-4. Validation Form
+2. 🧾Registration Form
+3. 🔍Scan KK
+4. ✅Validation Form
     - If user accept then go to Home Page
     - else go to Registration
 
