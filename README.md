@@ -1,4 +1,4 @@
-## JUARAI Android App
+## JUARAI Android App | DISCONTINUED
 
 ## Android Student Path
 - [Unero Bhagaskara](https://github.com/un-ro)
